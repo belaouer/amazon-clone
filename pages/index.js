@@ -1,7 +1,7 @@
 import Head from "next/head";
-import { Banner, Header } from "../components";
+import { Banner, Header, ProductFeed } from "../components";
 
-export default function Home() {
+export default function Home({ products }) {
   return (
     <div className='bg-gray-100'>
       <Head>
@@ -9,9 +9,22 @@ export default function Home() {
       </Head>
 
       <Header />
-      <main className='max-w-screen-2xl mx-auto bg-red-300'>
+      <main className='max-w-screen-2xl mx-auto '>
         <Banner />
+        <ProductFeed products={products} />
       </main>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const products = await fetch("https://fakestoreapi.com/products").then(
+    (res) => res.json()
+  );
+  // return {
+  //   props: {
+  //     products,
+  //   },
+  // };
+  return { props: { products } };
 }
