@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Banner, Header, ProductFeed } from "../components";
+import dynamic from "next/dynamic";
 
 export default function Home({ products }) {
   return (
@@ -18,10 +19,6 @@ export default function Home({ products }) {
 }
 
 export async function getServerSideProps({ req, res }) {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=10, stale-while-revalidate=59"
-  );
   const products = await fetch("https://fakestoreapi.com/products").then(
     (response) => response.json()
   );
