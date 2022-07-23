@@ -32,10 +32,11 @@ const Product = ({ id, title, price, description, category, image }) => {
 
       {hasPrime && (
         <div className='flex items-center space-x-2 -mt-5'>
-          <img
-            className='w-12'
+          <Image
             src='https://links.papareact.com/fdw'
             alt='prime'
+            width={48}
+            height={48}
           />
           <p className='text-xs text-gray-500'>FREE Next-day Delivery</p>
         </div>
