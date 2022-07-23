@@ -17,14 +17,14 @@ export default function Home({ products }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const products = await fetch("https://fakestoreapi.com/products").then(
-    (res) => res.json()
+export async function getServerSideProps({ req, res }) {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
   );
-  // return {
-  //   props: {
-  //     products,
-  //   },
-  // };
+  const products = await fetch("https://fakestoreapi.com/products").then(
+    (response) => response.json()
+  );
+
   return { props: { products } };
 }
