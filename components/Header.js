@@ -16,6 +16,7 @@ const Header = () => {
             height={40}
             objectFit='contain'
             className='cursor-pointer'
+            alt='amazon icon'
           />
         </div>
         <div className='hidden sm:flex h-10 rounded-md flex-grow items-center bg-yellow-400 hover:bg-yellow-500'>
